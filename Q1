@@ -1,0 +1,17 @@
+class Graph:
+    def __init__(self):
+        self.graph = {}  # To store the members and their relationships
+
+    def add_member(self, name, **info):
+        self.graph[name] = {'info': info, 'friends': set()}  # Add member with additional info
+
+    def add_relationship(self, member1, member2):
+        if member1 in self.graph and member2 in self.graph:
+            self.graph[member1]['friends'].add(member2)
+            self.graph[member2]['friends'].add(member1)
+
+    def find_friends(self, member):
+        if member in self.graph:
+            return list(self.graph[member]['friends'])
+        else:
+            return "Member not found."
