@@ -15,3 +15,11 @@ class Graph:
             return list(self.graph[member]['friends'])
         else:
             return "Member not found."
+
+    def shortest_path(self, start, end, path=[]):
+        if start not in self.graph or end not in self.graph:
+            return None
+        path = path + [start]
+        if start == end:
+            return 0
+        shortest = None
