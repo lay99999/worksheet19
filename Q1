@@ -15,5 +15,20 @@ class Graph:
             return list(self.graph[member]['friends'])
         else:
             return "Member not found."
-
+    
+    def shortest_path(self, start, end, path=[]): # Return the number of steps in the shortest path from the start to the end node
+       if start not in self.graph or end not in self.graph: # If start node or end node not in the graph
+           return None
+       path = path + [start] # path is the list of all nodes on the path from the start node to the end node
+       if start == end:
+           return 0
+       shortest = None
+       for node in self.graph[start]['friends']:
+           if node not in path:
+               new_shortest = self.shortest_path(node, end, path)
+               if new_shortest is not None:
+                   new_shortest += 1  
+                   if shortest is None or new_shortest < shortest:
+                       shortest = new_shortest
+       return shortest
  
