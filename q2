@@ -39,6 +39,7 @@ class Graph:
             return True
         else:
             return False
+
 # Creating a ring network
 ring_network = Graph()
 ring_network.add_vertex("A")
@@ -47,6 +48,7 @@ ring_network.add_vertex("C")
 ring_network.add_vertex("D")
 ring_network.add_vertex("E")
 ring_network.add_vertex("F")
+
 # Adding edges to form a ring
 ring_network.add_edge('A', 'B')
 ring_network.add_edge('B', 'C')
@@ -54,5 +56,18 @@ ring_network.add_edge('C', 'D')
 ring_network.add_edge('D', 'E')
 ring_network.add_edge('E', 'F')
 ring_network.add_edge('F', 'A')# Closing the ring
+
 # Checking connectivity
 print(ring_network.is_network_connected()) # Output: True
+
+# Creating a star network
+star_network = Graph()
+for node in ['Center', 'A', 'B', 'C', 'D', 'E']:
+    star_network.add_vertex(node)
+
+# Adding edges to form a star
+for node in ['A', 'B', 'C', 'D', 'E']:
+    star_network.add_edge('Center', node)
+
+# Checking connectivity
+print(star_network.is_network_connected())  # Output: True
