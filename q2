@@ -1,14 +1,41 @@
 class Graph:
     def __init__(self):
         self.graph = {}  # To store the members and their relationships
+    
     def add_vertex(self, name):
         self.graph[name] = {"adjacent vertices": set()}
+    
     def remove_vertex(self, name):
         if name not in list(self.graph.keys()):
             return None
         else:
             self.graph.pop(name)
+    
     def add_edge(self, name1, name2):
         if name1 in self.graph and name2 in self.graph:
             self.graph[name1]['adjacent vertices'].add(name2)
             self.graph[name2]['adjacent vertices'].add(name1)
+    
+    def connected_or_not(self):
+        list_of_generations = [] #The list of all generation (list of lists)
+        list_of_nodes = [] #list of all nodes collected from the invetigation
+        first_node = list(self.graph.keys())[0] #A random node for the first generation
+        list_of_generations.append([first_node])
+        list_of_nodes.append(first_node)
+        while True: #While loop for investigating all nodes as possible to see if the graph is connected or not
+            n = len(list_of_generations)
+            current_generation = list_of_generations[n-1]
+            next_generation = []
+            for node in current_generation:
+                for friend in self.graph[node]["adjacent vertices"]:
+                    if friend not in list_of_nodes:
+                        next_generation.append(friend)
+                        list_of_nodes.append(friend)
+            if len(next_generation) == 0:
+                break
+            else:
+                list_of_generations.append(next_generation)
+        if len(list_of_nodes) == len(list(self.graph.keys())):
+            return True
+        else:
+            return False
