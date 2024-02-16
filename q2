@@ -16,7 +16,7 @@ class Graph:
             self.graph[name1]['adjacent vertices'].add(name2)
             self.graph[name2]['adjacent vertices'].add(name1)
     
-    def connected_or_not(self):
+    def is_network_connected(self):
         list_of_generations = [] #The list of all generation (list of lists)
         list_of_nodes = [] #list of all nodes collected from the invetigation
         first_node = list(self.graph.keys())[0] #A random node for the first generation
