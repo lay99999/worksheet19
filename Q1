@@ -31,4 +31,15 @@ class Graph:
                    if shortest is None or new_shortest < shortest:
                        shortest = new_shortest
        return shortest
- 
+network = Graph()
+network.add_member("Alice", age=25, location="New York")
+network.add_member("Bob", age=30, location="Los Angeles")
+network.add_member("Charlie", age=35, location="Chicago")
+network.add_member("David", age=40, location="Seattle")
+network.add_relationship("Alice", "Bob")
+network.add_relationship("Bob", "Charlie")
+network.add_relationship("Charlie", "David")
+Bob_friends = network.find_friends("Bob")
+print(Bob_friends)  
+shortest_path_length = network.shortest_path("Alice", "David")
+print(shortest_path_length)
