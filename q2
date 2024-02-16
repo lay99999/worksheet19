@@ -1,0 +1,14 @@
+class Graph:
+    def __init__(self):
+        self.graph = {}  # To store the members and their relationships
+    def add_vertex(self, name):
+        self.graph[name] = {"adjacent vertices": set()}
+    def remove_vertex(self, name):
+        if name not in list(self.graph.keys()):
+            return None
+        else:
+            self.graph.pop(name)
+    def add_edge(self, name1, name2):
+        if name1 in self.graph and name2 in self.graph:
+            self.graph[name1]['adjacent vertices'].add(name2)
+            self.graph[name2]['adjacent vertices'].add(name1)
