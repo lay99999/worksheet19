@@ -31,6 +31,7 @@ class Graph:
                    if shortest is None or new_shortest < shortest:
                        shortest = new_shortest
        return shortest
+
 network = Graph()
 network.add_member("Alice", age=25, location="New York")
 network.add_member("Bob", age=30, location="Los Angeles")
