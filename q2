@@ -39,6 +39,15 @@ class Graph:
             return True
         else:
             return False
+    def get_adjacency_matrix(self):
+        vertices = list(self.graph.keys())
+        num_vertices = len(vertices)
+        adjacency_matrix = [[0] * num_vertices for _ in range(num_vertices)]
+        for i, vertex in enumerate(vertices):
+            for neighbor in self.graph[vertex]["adjacent vertices"]:
+                j = vertices.index(neighbor)
+                adjacency_matrix[i][j] = 1
+        return adjacency_matrix
 
 # Creating a ring network
 ring_network = Graph()
