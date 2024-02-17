@@ -48,7 +48,10 @@ class Graph:
                 j = vertices.index(neighbor)
                 adjacency_matrix[i][j] = 1
         return adjacency_matrix
-
+      def print_adjacency_matrix(self):
+        adjacency_matrix = self.get_adjacency_matrix()
+        for row in adjacency_matrix:
+            print(' '.join(map(str, row)))
 # Creating a ring network
 ring_network = Graph()
 ring_network.add_vertex("A")
@@ -66,6 +69,8 @@ ring_network.add_edge('D', 'E')
 ring_network.add_edge('E', 'F')
 ring_network.add_edge('F', 'A')# Closing the ring
 
+ring_network.print_adjacency_matrix()
+
 # Checking connectivity
 print(ring_network.is_network_connected()) # Output: True
 
@@ -80,3 +85,5 @@ for node in ['A', 'B', 'C', 'D', 'E']:
 
 # Checking connectivity
 print(star_network.is_network_connected())  # Output: True
+
+star_network.print_adjacency_matrix()
